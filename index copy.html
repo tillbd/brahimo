@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Age Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function updateAge() {
+            var birthDate = new Date('July 29, 2008 08:30:30');
+            var currentDate = new Date();
+
+            var ageInMillis = currentDate - birthDate;
+
+            var years = Math.floor(ageInMillis / (1000 * 60 * 60 * 24 * 365));
+            ageInMillis -= years * (1000 * 60 * 60 * 24 * 365);
+
+            var months = Math.floor(ageInMillis / (1000 * 60 * 60 * 24 * 30));
+            ageInMillis -= months * (1000 * 60 * 60 * 24 * 30);
+
+            var days = Math.floor(ageInMillis / (1000 * 60 * 60 * 24));
+            ageInMillis -= days * (1000 * 60 * 60 * 24);
+
+            var hours = Math.floor(ageInMillis / (1000 * 60 * 60));
+            ageInMillis -= hours * (1000 * 60 * 60);
+
+            var minutes = Math.floor(ageInMillis / (1000 * 60));
+            ageInMillis -= minutes * (1000 * 60);
+
+            var seconds = Math.floor(ageInMillis / 1000);
+
+            document.getElementById('age').textContent = years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+        }
+
+        // Update age every second
+        setInterval(updateAge, 1000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Age Calculator</h1>
+        <p>Your age is: <span id="age"></span></p>
+    </div>
+</body>
+</html>
